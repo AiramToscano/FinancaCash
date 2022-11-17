@@ -13,16 +13,20 @@ Users.init({
   id: {
     type: INTEGER,
     primaryKey: true,
+    allowNull: false,
     autoIncrement: true,
   },
   username: {
     type: STRING,
+    allowNull: false,
   },
   password: {
     type: STRING,
+    allowNull: false,
   },
-  accountId: {
+  accountid: {
     type: INTEGER,
+    allowNull: false,
   },
 }, {
   sequelize: db,
@@ -30,6 +34,6 @@ Users.init({
   underscored: true,
   timestamps: false });
 
-  Users.belongsTo(Account, { foreignKey: 'accountId', as: 'accountId' });
+Users.belongsTo(Account, { foreignKey: 'accountid', as: 'idaccount' });
 
 export default Users;

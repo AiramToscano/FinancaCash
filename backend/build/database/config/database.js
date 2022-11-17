@@ -1,7 +1,7 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
-var config = {
+const config = {
     username: process.env.DB_USER || 'postgres',
     password: process.env.DB_PASS || '123456',
     database: 'BancoNg',
@@ -9,8 +9,9 @@ var config = {
     port: Number(process.env.DB_PORT) || 5432,
     dialect: 'postgres',
     dialectOptions: {
-        timezone: 'Z'
+        timezone: 'Z',
     },
-    logging: false
+    logging: false,
 };
 module.exports = config;
+//# sourceMappingURL=database.js.map

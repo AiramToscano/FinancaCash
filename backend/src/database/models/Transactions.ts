@@ -34,7 +34,7 @@ Transaction.init({
   underscored: true,
   timestamps: false });
 
-  Transaction.belongsTo(Account, { foreignKey: 'debiteAccountId', as: 'debiteAccount' });
-  Transaction.belongsTo(Account, { foreignKey: 'creditedAccountId', as: 'creditedAccount' });
+Transaction.belongsTo(Account, { foreignKey: 'debiteAccountId', as: 'debiteAccount' });
+Transaction.belongsTo(Account, { foreignKey: 'creditedAccountId', as: 'creditedAccount' });
 
 export default Transaction;
