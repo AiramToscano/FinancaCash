@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { Ijwt } from '../interfaces/LoginInterface';
 
-export default class LoginController {
+export default class ValidadeToken {
   constructor(private jwt: Ijwt) {
   }
 
