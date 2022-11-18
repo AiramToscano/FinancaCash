@@ -1,6 +1,7 @@
 import * as express from 'express';
 import RegisterRoute from './routes/RegisterRoute';
 import LoginRoute from './routes/LoginRoute';
+import UserRoute from './routes/UsersRoute';
 
 class App {
   public app: express.Express;
@@ -24,7 +25,7 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
-    this.app.use(RegisterRoute, LoginRoute);
+    this.app.use(RegisterRoute, LoginRoute, UserRoute);
   }
 
   public start(PORT: string | number):void {
