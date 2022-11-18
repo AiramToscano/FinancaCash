@@ -5,9 +5,6 @@ module.exports = {
         balance: 100,
           // senha: secret_admin
       },
-      {
-        balance: 100,
-      },
     ], {});
   },
 
