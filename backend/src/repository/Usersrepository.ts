@@ -19,4 +19,8 @@ export default class UsersRepository implements IModel {
     });
     return findUsers as Users;
   }
+  async findOne(username: string):Promise<Users> {
+    const listUser = await this.model.findOne({ where: { username } });
+    return listUser as Users;
+  }
 }
