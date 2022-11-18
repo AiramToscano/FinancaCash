@@ -17,4 +17,28 @@ export default class LoginController {
     await this.service.userTransaction(iddebited, usercredited, value);
     return res.status(200).end();
   };
+
+  public UsersTransactionAll = async (req: Request, res: Response): Promise<object> => {
+    const { id } = req.body;
+    const users = await this.service.findUserTransactionAll(id);
+    return res.status(200).json({ users });
+  };
+
+  public UsersTransactionDebited = async (req: Request, res: Response): Promise<object> => {
+    const { id } = req.body;
+    const users = await this.service.findUserTransactionDebited(id);
+    return res.status(200).json({ users });
+  };
+
+  public UsersTransactionCredited = async (req: Request, res: Response): Promise<object> => {
+    const { id } = req.body;
+    const users = await this.service.findUserTransactionCredited(id);
+    return res.status(200).json({ users });
+  };
+
+  public UsersTransactionData = async (req: Request, res: Response): Promise<object> => {
+    const { id, startDate } = req.body;
+    const users = await this.service.findUserTransactionData(id, startDate);
+    return res.status(200).json(users);
+  };
 }

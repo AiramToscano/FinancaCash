@@ -22,6 +22,31 @@ UserRoute.post(
 );
 
 UserRoute.post(
+  '/transactions/all',
+  uservalidade.AuthToken,
+  UserControllerBalance.UsersTransactionAll,
+);
+
+UserRoute.post(
+  '/transactions/debited',
+  uservalidade.AuthToken,
+  UserControllerBalance.UsersTransactionDebited,
+);
+
+UserRoute.post(
+  '/transactions/credited',
+  uservalidade.AuthToken,
+  UserControllerBalance.UsersTransactionCredited,
+);
+
+UserRoute.post(
+  '/transactions/data',
+  uservalidade.AuthToken,
+  transactions.validTransactionsDate,
+  UserControllerBalance.UsersTransactionData,
+);
+
+UserRoute.post(
   '/transactions',
   uservalidade.AuthToken,
   transactions.validTransactionsUsers,

@@ -13,6 +13,10 @@ export interface IModel {
   : Promise<Transaction>
   updateBalance(id: number, balance: number):Promise<boolean>
   findOneByPk(id: number):Promise<Users>
+  findUserTransactionDebited(id: number):Promise<Transaction[]>
+  findUserTransactionCredited(id: number):Promise<Transaction[]>
+  findUserAllTransaction(id: number):Promise<Transaction[]>
+  findUserDataTransaction(id: number, startDate: string, endDate: string): Promise<Transaction[]>
 }
 
 export interface Iservice {
@@ -22,4 +26,8 @@ export interface Iservice {
   userBalanceCredited(Credname: string, value:number):Promise<number>
   userTransaction(id: number, Credname: string, value:number):Promise<boolean>
   userTransactionCreate(iddebited: number, idcreated: number, value:number):Promise<boolean>
+  findUserTransactionDebited(id: number):Promise<Array<object>>
+  findUserTransactionData(id: number, startDate: string):Promise<Array<object>>
+  findUserTransactionCredited(id: number):Promise<Array<object>>
+  findUserTransactionAll(id: number):Promise<Array<object>>
 }

@@ -1,3 +1,4 @@
+import moment = require('moment');
 import { IModel, Iservice } from '../interfaces/UsersInterface';
 
 export default class UserService implements Iservice {
@@ -53,5 +54,27 @@ export default class UserService implements Iservice {
     await this.userTransactionUpdateBalance(Number(UserAccountDebited), userBalanceDebited);
     await this.userTransactionUpdateBalance(Number(UserAccountCredited), userBalanceCredited);
     return true;
+  }
+
+  async findUserTransactionData(id: number, startDate: string):Promise<Array<object>> {
+    const data = moment(startDate, 'DD/MM/YYYY');
+    const dataFormat = data.format('YYYY-MM-DD');
+    const users = await this.model.findUserDataTransaction(id, dataFormat, dataFormat);
+    return users;
+  }
+
+  async findUserTransactionDebited(id: number):Promise<Array<object>> {
+    const Users = await this.model.findUserTransactionDebited(id);
+    return Users;
+  }
+
+  async findUserTransactionCredited(id: number):Promise<Array<object>> {
+    const Users = await this.model.findUserTransactionCredited(id);
+    return Users;
+  }
+
+  async findUserTransactionAll(id: number):Promise<Array<object>> {
+    const Users = await this.model.findUserAllTransaction(id);
+    return Users;
   }
 }
