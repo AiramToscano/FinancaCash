@@ -1,3 +1,4 @@
+import Op = require('sequelize');
 import Users from '../database/models/Users';
 import Account from '../database/models/Account';
 import Transaction from '../database/models/Transactions';
@@ -60,5 +61,85 @@ export default class UsersRepository implements IModel {
       },
     );
     return true;
+  }
+
+  async findUserTransactionDebited(id: number):Promise<Transaction[]> {
+    const findUsers = await this.model2.findAll({
+      where: { debiteAccountId: id },
+      include: [{
+        model: Account,
+        as: 'debiteAccount',
+        attributes: { exclude: ['id', 'balance'] },
+      }],
+    });
+    return findUsers as Transaction[];
+  }
+
+  async findUserTransactionCredited(id: number):Promise<Transaction[]> {
+    const findUsers = await this.model2.findAll({
+      where: { creditedAccountId: id },
+      include: [{
+        model: Account,
+        as: 'creditedAccount',
+        attributes: { exclude: ['id', 'balance'] },
+      }],
+    });
+    return findUsers as Transaction[];
+  }
+
+  async findUserAllTransaction(id: number):Promise<Transaction[]> {
+    const findUsers = await this.model2.findAll({
+      where: {
+        [Op.Op.or]: [
+          { creditedAccountId: id },
+          { debiteAccountId: id },
+        ],
+      },
+      include: [{
+        model: Account,
+        as: 'creditedAccount',
+        attributes: { exclude: ['id', 'balance'] },
+      },
+      {
+        model: Account,
+        as: 'debiteAccount',
+        attributes: { exclude: ['id', 'balance'] },
+      }],
+      order: [
+        ['createdAt', 'ASC']],
+    });
+    return findUsers as Transaction[];
+  }
+
+  async findUserDataTransaction(id: number, startDate: string, endDate: string): Promise<Transaction[]> {
+    const findUsers = await this.model2.findAll({
+      where: {
+        [Op.Op.and]: [
+          { createdAt: {
+            [Op.Op.lt]: new Date(new Date(endDate).getTime() + 60 * 60 * 24 * 1000 - 1),
+            [Op.Op.gt]: new Date(startDate),
+          } },
+          {
+            [Op.Op.or]: [
+              { creditedAccountId: id },
+              { debiteAccountId: id },
+            ],
+          },
+        ],
+      },
+      include: [{
+        model: Account,
+        as: 'creditedAccount',
+        attributes: { exclude: ['id', 'balance'] },
+      },
+      {
+        model: Account,
+        as: 'debiteAccount',
+        attributes: { exclude: ['id', 'balance'] },
+      }],
+      order: [
+        ['createdAt', 'ASC']],
+    });
+    return findUsers as Transaction[];
   }
 }

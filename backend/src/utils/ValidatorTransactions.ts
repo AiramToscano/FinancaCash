@@ -28,4 +28,12 @@ export default class ValidatorTransactions {
     }
     next();
   };
+
+  validTransactionsDate = async (req: Request, res: Response, next: NextFunction) => {
+    const { startDate } = req.body;
+    const patternData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
+    const teste = patternData.test(startDate);
+    if (!teste) return res.status(400).json({ message: 'data invalid format' });
+    next();
+  };
 }

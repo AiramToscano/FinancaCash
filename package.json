@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AiramToscano/FinancaCash#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "md5-typescript": "^1.0.5"
+    "md5-typescript": "^1.0.5",
+    "moment": "^2.29.4"
   }
 }
