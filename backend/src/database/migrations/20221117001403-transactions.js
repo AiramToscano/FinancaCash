@@ -13,15 +13,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      debiteAccountId: {
+      debite_account_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      creditedAccountId: {
+      credited_account_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
       },
