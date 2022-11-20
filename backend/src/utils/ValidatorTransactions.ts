@@ -23,7 +23,7 @@ export default class ValidatorTransactions {
     const { iddebited, value } = req.body;
     const user = await this.model.findUserBalance(iddebited);
     const { balance } = user.dataValues.idaccount.dataValues;
-    if (value > balance) {
+    if (value > balance || !Number.isInteger(value)) {
       return res.status(400).json({ message: 'operation is not authorized' });
     }
     next();

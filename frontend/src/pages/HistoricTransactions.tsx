@@ -7,6 +7,7 @@ import {
 } from '../utils/Api';
 import { HistoricTransaction } from '../interfaces/HistoricIntefaces';
 import Header from '../components/Header';
+import style from '../PagesCss/historictransactions.module.scss';
 
 function HistoricTransactions() {
   const [historic, setHistoric] = useState<HistoricTransaction[]>([]);
@@ -72,14 +73,16 @@ function HistoricTransactions() {
   return (
     <div>
       <Header />
-      <form>
+      <form className={style.div}>
         <input
           onChange={(e) => setfilterData(e.target.value)}
+          className={style.fieldclass}
           name="filterData"
-          placeholder="Digite a data que deseja filtrar"
+          placeholder="Digite a data"
           value={filterData}
         />
         <select
+          className={style.fieldclass}
           onChange={(e) => setFilterDebitedOrCredited(e.target.value)}
           value={filterDebitedOrCredited}
           name="filterByComp"
@@ -90,53 +93,59 @@ function HistoricTransactions() {
         </select>
         <button
           type="submit"
+          className={style.submitclass}
           onClick={handleSubmit}
         >
           Filtrar
         </button>
         <button
           type="submit"
+          className={style.submitclass}
           onClick={handleHistoricClear}
         >
           Limpar filtro
         </button>
-        {error && (
-        <div className="error-message">
+      </form>
+      {error && (
+        <div className={style.errormessage}>
           <p>
             Data invalida ou sem registros.
           </p>
         </div>
-        )}
-      </form>
+      )}
+      <br />
+      <br />
       <div>
-        <h3>Historico de Transações: </h3>
+        <h3 className={style.div2}>Historico de Transações: </h3>
       </div>
-      <table className="table-auto">
-        <thead>
-          <tr>
-            <th>Conta Creditada</th>
-            <th>Conta Debitada</th>
-            <th>Data</th>
-            <th>Hora</th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        {historic && historic.length > 0 ? historic.map((e) => (
-          <tbody key={e.id}>
+      <div className={style.div2}>
+        <table className={style.styledtable}>
+          <thead>
             <tr>
-              <td>{e.creditedAccountId}</td>
-              <td>{e.debiteAccountId}</td>
-              <td>{e.createdAt?.split('T')[0]}</td>
-              <td>{e.createdAt?.split('T')[1].split('.')[0]}</td>
-              <td>
-                R$:
-                {' '}
-                {e.value}
-              </td>
+              <th>Conta Creditada</th>
+              <th>Conta Debitada</th>
+              <th>Data</th>
+              <th>Hora</th>
+              <th>Valor</th>
             </tr>
-          </tbody>
-        )) : null}
-      </table>
+          </thead>
+          {historic && historic.length > 0 ? historic.map((e) => (
+            <tbody key={e.id}>
+              <tr>
+                <td>{e.creditedAccountId}</td>
+                <td>{e.debiteAccountId}</td>
+                <td>{e.createdAt?.split('T')[0]}</td>
+                <td>{e.createdAt?.split('T')[1].split('.')[0]}</td>
+                <td>
+                  R$:
+                  {' '}
+                  {e.value}
+                </td>
+              </tr>
+            </tbody>
+          )) : null}
+        </table>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiBalance, apiTransaction } from '../utils/Api';
+import style from '../PagesCss/transactions.module.scss';
 
 function Transactions() {
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ function Transactions() {
       handleSaldo(idaccount, token);
     }
     setTimeout(() => setSucess(false), 2000) as unknown as number;
+    setTimeout(() => setError(false), 2000) as unknown as number;
   }
 
   async function handleSubmit(event: React.MouseEvent<HTMLElement>) {
@@ -75,39 +77,48 @@ function Transactions() {
 
   return (
     <div>
-      <div>
-        <span>
-          Saldo:
-          R$
-          {' '}
-          {balance}
-          {' '}
-          BRL
-        </span>
-      </div>
-      <form data-testid="container" onSubmit={loginClick}>
+      <form className={style.formclass} onSubmit={loginClick}>
+        <div>
+          <span className={style.submitclass2}>
+            Saldo:
+            R$
+            {' '}
+            {balance}
+            {' '}
+            BRL
+          </span>
+        </div>
+        <br />
+        <br />
         <div className="inputs">
           <input
             type="number"
+            className={style.fieldclass}
             value={valor}
+            placeholder="Valor a ser transferido"
             autoComplete="on"
             min="1"
             onChange={(event) => setValor(event.target.value)}
           />
           <input
             type="username"
+            className={style.fieldclass}
             value={username}
+            placeholder="Nome do usuario para realizar a transferencia"
             onChange={(event) => setUsername(event.target.value)}
           />
         </div>
         <div className="btn">
           <button
             type="submit"
+            className={style.submitclass}
             onClick={handleSubmit}
           >
             Transferir
           </button>
         </div>
+        <br />
+        <br />
         {error && (
           <div className="error-message">
             <p>

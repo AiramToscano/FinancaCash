@@ -1,0 +1,95 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+h1 {
+    letter-spacing: 1.5vw;
+    font-family: 'system-ui';
+    text-transform: uppercase;
+    text-align: center;
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    width: 100%;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Mountains-1412683.svg/1280px-Mountains-1412683.svg.png) no-repeat center center;
+    background-size: cover;
+}
+.formclass {
+    width: 500px;
+    padding: 40px;
+    margin-top: 200px;
+    margin-left: 400px;
+    border-radius: 8px;
+    background-color: white;
+    font-family: 'system-ui';
+    box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
+}
+
+.formdiv > label {
+    letter-spacing: 3px;
+    font-size: 1rem;
+}
+.infodiv {
+    text-align: center;
+    margin-top: 20px;
+}
+.infodiv {
+    letter-spacing: 1px;
+}
+.fieldclass {
+    width: 100%;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 0px;
+    text-indent: 6px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-family: 'system-ui';
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+.submitclass {
+    border-style: none;
+    color: white;
+    border-radius: 5px;
+    background-color: black;
+    padding: 8px 20px;
+    font-family: 'system-ui';
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    box-shadow: 2px 2px 5px rgb(0,0,0,0.2);
+    cursor: pointer;
+}
+footer {
+    height: 10vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -5px -5px 10px rgb(0,0,0,0.3);
+}
+footer > p {
+    text-align: center;
+    font-family: 'system-ui';
+    letter-spacing: 3px;
+}
+footer > p > a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}

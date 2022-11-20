@@ -18,6 +18,15 @@ export async function apiRegister(username: string, password: string) {
   }
 }
 
+export async function apiUsers(accountid: number) {
+  try {
+    const response = await axios.post('http://localhost:3004/username', { accountid });
+    return response.data;
+  } catch (err) {
+    return false;
+  }
+}
+
 export async function apiBalance(id: number, token: string) {
   try {
     const response = await axios.post(
