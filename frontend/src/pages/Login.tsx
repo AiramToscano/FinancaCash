@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiLogin } from '../utils/Api';
+import style from '../PagesCss/login.module.scss';
 
 function Login() {
   const MIN_LENGTH_PASSWORD = 8;
@@ -30,10 +31,6 @@ function Login() {
     setError(true);
   }
 
-  function handleSubmitRegister() {
-    navigate('/register');
-  }
-
   useEffect(() => {
     const userId = window.localStorage.getItem('user');
     if (userId) {
@@ -42,34 +39,33 @@ function Login() {
   }, []);
 
   return (
-    <form data-testid="container" onSubmit={loginClick}>
-      <div className="inputs">
+    <form id="login_form" className={style.formclass} onSubmit={loginClick}>
+      <h4> Sign In</h4>
+      <div className={style.formdiv}>
         <input
           type="username"
+          className={style.fieldclass}
           value={username}
+          placeholder="Username"
           autoComplete="on"
           onChange={(event) => setUsername(event.target.value)}
         />
-
         <input
           type="password"
+          className={style.fieldclass}
+          placeholder="Password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
       <div className="btn">
         <button
+          className={style.submitclass}
           type="submit"
           disabled={password.length < MIN_LENGTH_PASSWORD || username.length < MIN_LENGTH_USERNAME}
           onClick={handleSubmit}
         >
           Entrar
-        </button>
-        <button
-          type="button"
-          onClick={handleSubmitRegister}
-        >
-          Crie sua conta
         </button>
       </div>
       {error && (
@@ -79,6 +75,14 @@ function Login() {
           </p>
         </div>
       )}
+      <div className={style.infodiv}>
+        <p>
+          Ainda não é um usuário registrado?
+          <a href="/register">
+            Cadastre-se!
+          </a>
+        </p>
+      </div>
     </form>
   );
 }

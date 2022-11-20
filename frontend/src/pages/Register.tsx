@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiRegister } from '../utils/Api';
+import style from '../PagesCss/login.module.scss';
 
 function Register() {
   const MIN_LENGTH_PASSWORD = 8;
@@ -25,15 +26,15 @@ function Register() {
     setError(true);
   }
 
-  function handleSubmitRegister() {
-    navigate('/login');
-  }
-
   return (
-    <form data-testid="container" onSubmit={loginClick}>
-      <div className="inputs">
+    <form data-testid="container" className={style.formclass} onSubmit={loginClick}>
+      <h4>Crie sua conta na NgCash</h4>
+      <br />
+      <div className={style.formdiv}>
+        <p>Username:</p>
         <input
           type="username"
+          className={style.fieldclass}
           value={username}
           autoComplete="on"
           onChange={(event) => setUsername(event.target.value)}
@@ -41,32 +42,31 @@ function Register() {
         <small>
           <li>Username não pode ter espaços.</li>
         </small>
+        <br />
+        <p>Senha:</p>
         <input
           type="password"
+          className={style.fieldclass}
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
         <small>
-          <li>1 letra maiúscula.</li>
-          <li>1 caracter especial.</li>
+          <li>Uma letra maiúscula.</li>
+          <li>Um caracter especial.</li>
           <li>Pelo menos 8 digitos.</li>
         </small>
       </div>
       <div className="btn">
         <button
           type="submit"
+          className={style.submitclass}
           disabled={password.length < MIN_LENGTH_PASSWORD || username.length < MIN_LENGTH_USERNAME}
           onClick={handleSubmit}
         >
           Continuar
         </button>
-        <button
-          type="button"
-          onClick={handleSubmitRegister}
-        >
-          Faça login
-        </button>
       </div>
+      <br />
       {error && (
         <div className="error-message">
           <p>
@@ -74,6 +74,14 @@ function Register() {
           </p>
         </div>
       )}
+      <div className={style.infodiv}>
+        <p>
+          Você ja possui conta?
+          <a href="/login">
+            Faça Login!
+          </a>
+        </p>
+      </div>
     </form>
   );
 }

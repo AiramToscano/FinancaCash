@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import style from '../PagesCss/header.module.scss';
 
 function Header() {
   const navigate = useNavigate();
@@ -41,10 +42,9 @@ function Header() {
 
   return (
     <div>
-      <header>
+      <header className={style.header}>
         <div>
           <span>
-            Conta:
             {' '}
             {usernameAccount}
             {' '}
@@ -60,21 +60,24 @@ function Header() {
         </div>
         <button
           type="button"
-          onClick={handleSubmitLogoff}
-        >
-          Sair
-        </button>
-        <button
-          type="button"
+          className={style.buttom}
           onClick={handleSubmithistoric}
         >
           Ver transações
         </button>
         <button
           type="button"
+          className={style.buttom}
           onClick={handleSubmithome}
         >
           Home
+        </button>
+        <button
+          className={style.buttom}
+          type="button"
+          onClick={handleSubmitLogoff}
+        >
+          Logoff
         </button>
       </header>
     </div>
