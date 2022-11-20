@@ -17,6 +17,8 @@ export interface IModel {
   findUserTransactionCredited(id: number):Promise<Transaction[]>
   findUserAllTransaction(id: number):Promise<Transaction[]>
   findUserDataTransaction(id: number, startDate: string, endDate: string): Promise<Transaction[]>
+  findUserDataTransactionDebited(id: number, startDate: string, endDate: string): Promise<Transaction[]>
+  findUserDataTransactionCredtid(id: number, startDate: string, endDate: string): Promise<Transaction[]>
 }
 
 export interface Iservice {
@@ -30,4 +32,7 @@ export interface Iservice {
   findUserTransactionData(id: number, startDate: string):Promise<Array<object>>
   findUserTransactionCredited(id: number):Promise<Array<object>>
   findUserTransactionAll(id: number):Promise<Array<object>>
+  filterUserDebiteOrCredite(id: number, debiteOrCredite: string):Promise<Array<object>>
+  filterUserDebiteOrCrediteData(
+    id: number, startDate: string, debiteOrCredite: string):Promise<Array<object>>
 }

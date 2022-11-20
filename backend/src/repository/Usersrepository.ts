@@ -71,6 +71,8 @@ export default class UsersRepository implements IModel {
         as: 'debiteAccount',
         attributes: { exclude: ['id', 'balance'] },
       }],
+      order: [
+        ['createdAt', 'DESC']],
     });
     return findUsers as Transaction[];
   }
@@ -83,6 +85,8 @@ export default class UsersRepository implements IModel {
         as: 'creditedAccount',
         attributes: { exclude: ['id', 'balance'] },
       }],
+      order: [
+        ['createdAt', 'DESC']],
     });
     return findUsers as Transaction[];
   }
@@ -106,7 +110,7 @@ export default class UsersRepository implements IModel {
         attributes: { exclude: ['id', 'balance'] },
       }],
       order: [
-        ['createdAt', 'ASC']],
+        ['createdAt', 'DESC']],
     });
     return findUsers as Transaction[];
   }
@@ -135,6 +139,63 @@ export default class UsersRepository implements IModel {
       {
         model: Account,
         as: 'debiteAccount',
+        attributes: { exclude: ['id', 'balance'] },
+      }],
+      order: [
+        ['createdAt', 'DESC']],
+    });
+    return findUsers as Transaction[];
+  }
+
+  async findUserDataTransactionDebited(
+    id: number,
+    startDate: string,
+    endDate: string,
+  ): Promise<Transaction[]> {
+    const findUsers = await this.model2.findAll({
+      where: {
+        [Op.Op.and]: [
+          { createdAt: {
+            [Op.Op.lt]: new Date(new Date(endDate).getTime() + 60 * 60 * 24 * 1000 - 1),
+            [Op.Op.gt]: new Date(startDate),
+          } },
+          {
+            debiteAccountId: id,
+          },
+        ],
+      },
+      include: [
+        {
+          model: Account,
+          as: 'debiteAccount',
+          attributes: { exclude: ['id', 'balance'] },
+        }],
+      order: [
+        ['createdAt', 'DESC']],
+    });
+    return findUsers as Transaction[];
+  }
+
+  async findUserDataTransactionCredtid(
+    id: number,
+    startDate: string,
+    endDate: string,
+  ): Promise<Transaction[]> {
+    const findUsers = await this.model2.findAll({
+      where: {
+        [Op.Op.and]: [
+          { createdAt: {
+            [Op.Op.lt]: new Date(new Date(endDate).getTime() + 60 * 60 * 24 * 1000 - 1),
+            [Op.Op.gt]: new Date(startDate),
+          } },
+          {
+            creditedAccountId: id,
+          },
+        ],
+      },
+      include: [{
+        model: Account,
+        as: 'creditedAccount',
         attributes: { exclude: ['id', 'balance'] },
       }],
       order: [

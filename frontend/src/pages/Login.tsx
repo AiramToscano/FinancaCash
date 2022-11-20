@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { apiLogin } from '../utils/Api';
 
@@ -34,6 +34,13 @@ function Login() {
     navigate('/register');
   }
 
+  useEffect(() => {
+    const userId = window.localStorage.getItem('user');
+    if (userId) {
+      navigate('/home');
+    }
+  }, []);
+
   return (
     <form data-testid="container" onSubmit={loginClick}>
       <div className="inputs">
@@ -56,13 +63,13 @@ function Login() {
           disabled={password.length < MIN_LENGTH_PASSWORD || username.length < MIN_LENGTH_USERNAME}
           onClick={handleSubmit}
         >
-          LOGIN
+          Entrar
         </button>
         <button
           type="button"
           onClick={handleSubmitRegister}
         >
-          REGISTRAR
+          Crie sua conta
         </button>
       </div>
       {error && (

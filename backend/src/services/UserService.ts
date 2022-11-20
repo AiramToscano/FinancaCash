@@ -77,4 +77,28 @@ export default class UserService implements Iservice {
     const Users = await this.model.findUserAllTransaction(id);
     return Users;
   }
+
+  async filterUserDebiteOrCredite(id: number, debiteOrCredite: string):Promise<Array<object>> {
+    if (debiteOrCredite === 'debited') {
+      const Users = await this.findUserTransactionDebited(id);
+      return Users;
+    }
+    const Users = await this.findUserTransactionCredited(id);
+    return Users;
+  }
+
+  async filterUserDebiteOrCrediteData(
+    id: number,
+    startDate: string,
+    debiteOrCredite: string,
+  ):Promise<Array<object>> {
+    const data = moment(startDate, 'DD/MM/YYYY');
+    const dataFormat = data.format('YYYY-MM-DD');
+    if (debiteOrCredite === 'debited') {
+      const Users = await this.model.findUserDataTransactionDebited(id, dataFormat, dataFormat);
+      return Users;
+    }
+    const Users = await this.model.findUserDataTransactionCredtid(id, dataFormat, dataFormat);
+    return Users;
+  }
 }

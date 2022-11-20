@@ -28,15 +28,9 @@ UserRoute.post(
 );
 
 UserRoute.post(
-  '/transactions/debited',
+  '/transactions/debitedorcredited',
   uservalidade.AuthToken,
-  UserControllerBalance.UsersTransactionDebited,
-);
-
-UserRoute.post(
-  '/transactions/credited',
-  uservalidade.AuthToken,
-  UserControllerBalance.UsersTransactionCredited,
+  UserControllerBalance.UsersTransactionDebitedCredited,
 );
 
 UserRoute.post(
@@ -44,6 +38,13 @@ UserRoute.post(
   uservalidade.AuthToken,
   transactions.validTransactionsDate,
   UserControllerBalance.UsersTransactionData,
+);
+
+UserRoute.post(
+  '/transactions/datadebitedcredited',
+  uservalidade.AuthToken,
+  transactions.validTransactionsDate,
+  UserControllerBalance.UsersTransactionDataDebitedCredited,
 );
 
 UserRoute.post(
