@@ -24,21 +24,21 @@ export default class LoginController {
     return res.status(200).json({ users });
   };
 
-  public UsersTransactionDebited = async (req: Request, res: Response): Promise<object> => {
-    const { id } = req.body;
-    const users = await this.service.findUserTransactionDebited(id);
-    return res.status(200).json({ users });
-  };
-
-  public UsersTransactionCredited = async (req: Request, res: Response): Promise<object> => {
-    const { id } = req.body;
-    const users = await this.service.findUserTransactionCredited(id);
+  public UsersTransactionDebitedCredited = async (req: Request, res: Response): Promise<object> => {
+    const { id, debiteOrCredite } = req.body;
+    const users = await this.service.filterUserDebiteOrCredite(id, debiteOrCredite);
     return res.status(200).json({ users });
   };
 
   public UsersTransactionData = async (req: Request, res: Response): Promise<object> => {
     const { id, startDate } = req.body;
     const users = await this.service.findUserTransactionData(id, startDate);
+    return res.status(200).json(users);
+  };
+
+  public UsersTransactionDataDebitedCredited = async (req: Request, res: Response): Promise<object> => {
+    const { id, startDate, debiteOrCredite } = req.body;
+    const users = await this.service.filterUserDebiteOrCrediteData(id, startDate, debiteOrCredite);
     return res.status(200).json(users);
   };
 }

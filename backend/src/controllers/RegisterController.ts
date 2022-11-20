@@ -9,6 +9,6 @@ export default class LoginController {
   public RegisterUser = async (req: Request, res: Response): Promise<object> => {
     const { username, password } = req.body;
     await this.service.createUser(username, password);
-    return res.status(200).json({ message: 'deu certo'});
+    return res.status(200).json({ message: 'deu certo' });
   };
 }

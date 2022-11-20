@@ -25,6 +25,10 @@ function Register() {
     setError(true);
   }
 
+  function handleSubmitRegister() {
+    navigate('/login');
+  }
+
   return (
     <form data-testid="container" onSubmit={loginClick}>
       <div className="inputs">
@@ -35,7 +39,7 @@ function Register() {
           onChange={(event) => setUsername(event.target.value)}
         />
         <small>
-          <li>username não pode ter espaços.</li>
+          <li>Username não pode ter espaços.</li>
         </small>
         <input
           type="password"
@@ -54,7 +58,13 @@ function Register() {
           disabled={password.length < MIN_LENGTH_PASSWORD || username.length < MIN_LENGTH_USERNAME}
           onClick={handleSubmit}
         >
-          REGISTRAR
+          Continuar
+        </button>
+        <button
+          type="button"
+          onClick={handleSubmitRegister}
+        >
+          Faça login
         </button>
       </div>
       {error && (
