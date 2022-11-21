@@ -1,0 +1,57 @@
+version: '3.9'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    working_dir: /app-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    # Os `healthcheck` devem garantir que a aplicação
+    # está operacional, antes de liberar o container
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
+      timeout: 10s
+      retries: 5
+  backend:
+    container_name: app_backend
+    build: ./backend
+    ports:
+      - 3001:3001
+    working_dir: /app-backend
+    command: npm run dev
+    volumes: 
+      - ./backend/src:/app-backend/src
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_USER=postgres
+      - DB_PASS=123456
+      - DB_HOST=localhost
+      - DB_PORT=5432
+      - APP_PORT=3001
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
+      timeout: 10s
+      retries: 5
+  db:
+        image: postgres:10.5
+        restart: always
+        container_name: db
+        platform: linux/x86_64
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - 5432:5432
+        environment:
+        - POSTGRES_PASSWORD=123456
+        healthcheck:
+         test: ["CMD-SHELL", "pg_isready -U postgres"] # Deve aguardar o banco ficar operacional
+         timeout: 10s
+         retries: 5
+        cap_add:
+        - SYS_NICE # Deve omitir alertas menores
