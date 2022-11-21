@@ -39,26 +39,26 @@ FronEnd:
 
 Logo o backend foi construido:
 - src
-  - controllers - responsável validar regras de negocios de um aplicação, integração com a camada service.
-  - database - responsável pela criação do banco de dados postgres e o ORM sequelize.
-  - interfaces - responsavél pelo contrato que os métodos de um objeto deve suportar.
-  - repository - responsável pela comunicação com o banco de dados postgres.
-  - routes - responsavel pela criação de rotas das api do projeto.
-  - services - validar regras de negócios de uma aplicação.
-  - utils - responsavel pela validação de algumas regras de negócio e a criação do jwt.
-  - app.ts - criação do servidor
-  - server.ts - criação do servidor
+  - controllers - Responsável validar regras de negocios de um aplicação, integração com a camada service.
+  - database - Responsável pela criação do banco de dados postgres e o ORM sequelize.
+  - interfaces - Responsável pelo contrato que os métodos de um objeto deve suportar.
+  - repository - Responsável pela comunicação com o banco de dados postgres.
+  - routes - Responsavel pela criação de rotas das api do projeto.
+  - services - Validar regras de negócios de uma aplicação.
+  - utils - Responsavel pela validação de algumas regras de negócio e a criação do jwt.
+  - app.ts - Criação do servidor
+  - server.ts - Criação do servidor
   
 ### FrontEnd:
 - A construção do frontEnd foi feita Utilizando typescript e ESLINT.
 
 Logo o frontend foi construido:
 - src
-  - componentes - responsável por criar alguns componentes utilizados durante o projeto.
-  - interfaces - responsavél pelo contrato que os métodos de um objeto deve suportar.
-  - pages - paginas que são utilizadas no projeto.
-  - pagesCss - arquivos de estilização do projeto.
-  - utils - responsavel pela para criar a comunicação com o backEnd.
-  - index.tsx - criação do servidor.
+  - componentes - Responsável por criar alguns componentes utilizados durante o projeto.
+  - interfaces - Responsavél pelo contrato que os métodos de um objeto deve suportar.
+  - pages - Paginas que são utilizadas no projeto.
+  - pagesCss - Arquivos de estilização do projeto.
+  - utils - Responsavel pela para criar a comunicação com o backEnd.
+  - index.tsx - Criação do servidor.
 
 
