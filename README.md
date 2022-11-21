@@ -61,4 +61,11 @@ Logo o frontend foi construido:
   - utils - Responsavel pela para criar a comunicação com o backEnd.
   - index.tsx - Criação do servidor.
 
+## Pontos a melhorar:
+
+  - Acredito que para uma aplicação ser completa, necessita de ter testes, infelizmente por conta de alguns imprevistos durante a semana, não pude fazer os testes na aplicação de backEnd e frontEnd, pretendo construir os testes futuramente.
+  - Na aplicação de frontend, acredito que poderia ter mais componentes, repetir muito código desnecessário, acredito que para uma aplicação muito grande, é essencial a componentização de componentes.
+  - Na aplicação total, acredito que possa melhorar o nomes das minhas rotas, algo mais prático.
+
+
 
