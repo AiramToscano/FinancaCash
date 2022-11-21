@@ -23,6 +23,8 @@ Nesse projeto foi feita a integração do backend e do frontend utilizando docke
 
 Dentro da pasta /app:
 - `npm run compose:up`
+- Acesse `http://localhost:3000/`
+- Caso queira parar a aplicação `npm run compose:down`
 
 Caso queria rodar sem docker:
 
