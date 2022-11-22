@@ -71,5 +71,5 @@ Logo o frontend foi construido:
 
 ## Preview do Projeto: 
 
-![Cash](https://github.com/AiramToscano/FinancaCash/blob/main/NGcashOFICIAL.gif)
+
 
