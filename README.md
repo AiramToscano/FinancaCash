@@ -69,5 +69,7 @@ Logo o frontend foi construido:
   - Na aplicação de frontend, acredito que poderia ter mais componentes, repetir muito código desnecessário, acredito que para uma aplicação muito grande, é essencial a componentização de componentes.
   - Na aplicação total, acredito que possa melhorar o nomes das minhas rotas, algo mais prático.
 
+## Preview do Projeto: 
 
+![Pixels](https://github.com/AiramToscano/Pixels-Art/blob/airam-toscano-project-pixels-art/art-with-pixels.gif)
 
