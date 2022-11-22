@@ -71,5 +71,5 @@ Logo o frontend foi construido:
 
 ## Preview do Projeto: 
 
-![Pixels](https://github.com/AiramToscano/Pixels-Art/blob/airam-toscano-project-pixels-art/art-with-pixels.gif)
+![Cash](https://github.com/AiramToscano/FinancaCash/blob/main/NGcashOFICIAL.gif)
 
