@@ -18,7 +18,7 @@ O desafio do projeto é estruturar uma aplicação web fullstack, dockerizada, c
 * CSS Modules.
  
 ## Para utilizar o projeto :
-Nesse projeto foi feita a integração do backend e do frontend utilizando docker-compose, logo é preciso ter o npm ou yarn e o docker instalado na máquina.
+Nesse projeto foi feita a integração do backend e do frontend utilizando docker-compose, logo é preciso ter o npm e o docker instalado na máquina.
 - `git clone git@github.com:AiramToscano/FinancaCash.git`
 
 Dentro da pasta /app:
